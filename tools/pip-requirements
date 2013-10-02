@@ -1,0 +1,10 @@
+Django
+South
+django-debug-toolbar
+# django-sentry
+# python-memcached
+# django-annoying
+# django-widget-tweaks
+eventlet
+greenlet
+# psycopg2
