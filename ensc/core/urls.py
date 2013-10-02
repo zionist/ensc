@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
+from core.views import PageDetailView
 
 urlpatterns = patterns('',
-    #url(r'^$', views.index, name='index'),
-#    url(r'^view/(?P<pk>\d+)$',  PassportDetailView.as_view(), name="view"),
+    url(r'^pages/(?P<slug>\D+)$',  PageDetailView.as_view()),
 )
