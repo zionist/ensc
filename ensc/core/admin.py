@@ -5,17 +5,21 @@ from django.contrib import admin
 class BlockAdmin(admin.ModelAdmin):
     list_display = ('__unicode__',)
     search_fields = ('header', 'text')
-    # list_filter = ('may_edit', )
-
-
-#class BlockInline(admin.TabularInline):
-#    model = Block
+    class Media:
+        js = [
+            '/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js',
+            '/static/grappelli/tinymce_setup/tinymce_setup.js',
+        ]
 
 
 class PageAdmin(admin.ModelAdmin):
     list_display = ('__unicode__',)
     search_fields = ('header', 'short_text')
-#    inlines = [BlockInline, ]
+    class Media:
+        js = [
+            '/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js',
+            '/static/grappelli/tinymce_setup/tinymce_setup.js',
+        ]
 
 
 admin.site.register(Page, PageAdmin)

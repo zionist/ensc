@@ -10,6 +10,7 @@ env/*
 
 # django static
 static/*
+ensc/static/*
 # django media
 media/*
 

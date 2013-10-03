@@ -7,4 +7,5 @@ django-debug-toolbar
 # django-widget-tweaks
 eventlet
 greenlet
+django-grappelli
 # psycopg2
