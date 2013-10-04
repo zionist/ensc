@@ -53,7 +53,7 @@
 
       <!-- Jumbotron -->
       <div class="jumbotron">
-        <h2> {{ page.header }} </h2> </p>
+        <h2> {% inplace_edit "page.header|safe" %} </h2>
       </div>
 
       <hr>
@@ -68,8 +68,8 @@
         </div>
         <div class="span3 ">
             {% for block in page.block_set.all %}
-                <h4> {{ block.header }} </h4>
-                {{ block.text|safe }}
+                <h4> {% inplace_edit "block.header" %} </h4>
+                {% inplace_edit "block.text|safe" %}
                 <hr>
             {% endfor %}
         </div>
