@@ -23,6 +23,7 @@ class Block(models.Model):
     class Meta:
         app_label = "core"
         verbose_name = "Block"
+        ordering = ["-weight"]
 
     def __unicode__(self):
         return "%s" % (self.header)
@@ -30,4 +31,25 @@ class Block(models.Model):
     header = models.CharField('block header', max_length=400,
                               help_text='block header')
     text = models.TextField('block text', help_text='block text')
-    pages = models.ManyToManyField(Page)
+    weight = models.IntegerField('Weight for order', default=0, 
+        help_text='Weight for ordering block on page. If value is greater, block will be displayed hier on page')
+    pages = models.ManyToManyField(Page, help_text='On which pages this block should be displayed')
+
+
+class Menu(models.Model):
+
+    class Meta:
+        app_label = "core"
+        verbose_name = "Menu"
+        ordering = ["-weight"]
+
+    def __unicode__(self):
+        return "%s" % (self.name)
+
+    name = models.CharField('menu name', max_length=400,
+                              help_text='menu name')
+    url = models.CharField('menu url', max_length=400,
+                              help_text='url to there menu item points')
+    weight = models.IntegerField('Weight for order', default=0, 
+        help_text='Weight for ordering menu itimes on page. "\
+        "If value is greater, menu item will be displayed on the right of the page')

@@ -8,4 +8,6 @@ django-debug-toolbar
 eventlet
 greenlet
 django-grappelli
+django-compressor
+django-inplaceedit
 # psycopg2

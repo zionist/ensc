@@ -1,4 +1,5 @@
-
+{% load compress %}
+{% load inplace_edit %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,7 +17,7 @@
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-      <script src="assets/js/html5shiv.js"></script>
+      <script src="/static/assets/js/html5shiv.js"></script>
     <![endif]-->
 
   </head>
@@ -36,11 +37,14 @@
           <div class="navbar-inner">
             <div class="container">
               <ul class="nav">
-                <li class="active"><a href="#">Приемущества</a></li>
-                <li><a href="#">Учителя</a></li>
-                <li><a href="#">Процесс</a></li>
-                <li><a href="#">Отзывы</a></li>
-                <li><a href="#">Цены</a></li>
+                {% for item in menu %}
+                    {% if item.active %} 
+                        <li class="active"> <a href="{{ item.url }}">{{ item.name }}</a></li>
+                    {% else %}
+                        <li> <a href="{{ item.url }}">{{ item.name }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                <!-- <li class="active"><a href="#">Приемущества</a></li> -->
               </ul>
             </div>
           </div>
@@ -57,9 +61,9 @@
       <!-- Example row of columns -->
       <div class="row-fluid">
         <div class="span9">
-          <p> {{ page.short_text }} </p>
+          {% inplace_edit "page.short_text|safe" %}
           <hr>
-          <p> {{ page.detail_text }} </p>
+          {% inplace_edit "page.detail_text|safe" %}
 
         </div>
         <div class="span3 ">
@@ -107,7 +111,7 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/js/jquery.js"></script>
+    <!-- 
     <script src="assets/js/bootstrap-transition.js"></script>
     <script src="assets/js/bootstrap-alert.js"></script>
     <script src="assets/js/bootstrap-modal.js"></script>
@@ -119,7 +123,20 @@
     <script src="assets/js/bootstrap-button.js"></script>
     <script src="assets/js/bootstrap-collapse.js"></script>
     <script src="assets/js/bootstrap-carousel.js"></script>
-    <script src="assets/js/bootstrap-typeahead.js"></script>
+    <script src="assets/js/bootstrap-typeahead.js"></script> -->
+    <script src="/static/assets/js/jquery.js"></script>
+    {% inplace_toolbar %} {% comment %} or inplace_static {% endcomment %}
+
+    
+    {% compress js %}
+    <!-- <script>
+    // variable for passing to the coffeescript frontend
+    // var options = {
+    //   activemenu : 'test',
+    // };
+    </script> -->
+    <!-- <script type="text/coffeescript" charset="utf-8" src="/static/js/main.coffee" /> -->
+    {% endcompress %}
 
   </body>
 </html>
