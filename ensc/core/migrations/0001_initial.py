@@ -15,6 +15,8 @@ class Migration(SchemaMigration):
             ('header', self.gf('django.db.models.fields.CharField')(max_length=400)),
             ('short_text', self.gf('django.db.models.fields.TextField')()),
             ('detail_text', self.gf('django.db.models.fields.TextField')()),
+            ('title', self.gf('django.db.models.fields.CharField')(max_length=4096)),
+            ('description', self.gf('django.db.models.fields.TextField')()),
         ))
         db.send_create_signal('core', ['Page'])
 
@@ -23,7 +25,7 @@ class Migration(SchemaMigration):
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('header', self.gf('django.db.models.fields.CharField')(max_length=400)),
             ('text', self.gf('django.db.models.fields.TextField')()),
-            ('weight', self.gf('django.db.models.fields.IntegerField')()),
+            ('weight', self.gf('django.db.models.fields.IntegerField')(default=0)),
         ))
         db.send_create_signal('core', ['Block'])
 
@@ -36,6 +38,15 @@ class Migration(SchemaMigration):
         ))
         db.create_unique(m2m_table_name, ['block_id', 'page_id'])
 
+        # Adding model 'Menu'
+        db.create_table(u'core_menu', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=400)),
+            ('url', self.gf('django.db.models.fields.CharField')(max_length=400)),
+            ('weight', self.gf('django.db.models.fields.IntegerField')(default=0)),
+        ))
+        db.send_create_signal('core', ['Menu'])
+
 
     def backwards(self, orm):
         # Deleting model 'Page'
@@ -47,22 +58,34 @@ class Migration(SchemaMigration):
         # Removing M2M table for field pages on 'Block'
         db.delete_table(db.shorten_name(u'core_block_pages'))
 
+        # Deleting model 'Menu'
+        db.delete_table(u'core_menu')
+
 
     models = {
         'core.block': {
-            'Meta': {'object_name': 'Block'},
+            'Meta': {'ordering': "['-weight']", 'object_name': 'Block'},
             'header': ('django.db.models.fields.CharField', [], {'max_length': '400'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'pages': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['core.Page']", 'symmetrical': 'False'}),
             'text': ('django.db.models.fields.TextField', [], {}),
-            'weight': ('django.db.models.fields.IntegerField', [], {})
+            'weight': ('django.db.models.fields.IntegerField', [], {'default': '0'})
+        },
+        'core.menu': {
+            'Meta': {'ordering': "['-weight']", 'object_name': 'Menu'},
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '400'}),
+            'url': ('django.db.models.fields.CharField', [], {'max_length': '400'}),
+            'weight': ('django.db.models.fields.IntegerField', [], {'default': '0'})
         },
         'core.page': {
             'Meta': {'object_name': 'Page'},
+            'description': ('django.db.models.fields.TextField', [], {}),
             'detail_text': ('django.db.models.fields.TextField', [], {}),
             'header': ('django.db.models.fields.CharField', [], {'max_length': '400'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'short_text': ('django.db.models.fields.TextField', [], {}),
+            'title': ('django.db.models.fields.CharField', [], {'max_length': '4096'}),
             'url': ('django.db.models.fields.CharField', [], {'max_length': '200'})
         }
     }

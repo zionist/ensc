@@ -1,8 +1,57 @@
 body {
-  padding-top: 20px;
+  /* padding-top: 20px; */
   /* padding-bottom: 60px; */
-  /* font-family: 'Roboto Condensed', sans-serif;
- font-family: 'Roboto', sans-serif; */
+  /* font-family: 'Roboto Condensed', sans-serif; */
+  font-family: 'Open Sans', sans-serif; 
+}
+
+#header {
+ position: absolute;
+ z-index: -1;
+ margin: 0 auto;
+ height: 118px;
+ width: 100%;
+ max-width: 1920px !important;
+ background-image: url(/static/img/header3.png); 
+ font-weight: 300;
+}
+
+#header_space {
+ height: 95px;
+ width: 100%;
+ display: block;
+}
+
+.logo_font1 {
+    left: 50px;
+    font-size: 34px;
+}
+
+.logo_font2 {
+    font-size: 20px;
+}
+
+.logo_font3 {
+    font-size: 30px;
+}
+
+#header_logo {
+    padding-left: 50px;
+    padding-top: 25px;
+    float: left;
+    width: 550px;
+}
+
+#header_label {
+    padding-top: 35px;
+    float: left;
+    width: auto;
+}
+
+#header_address {
+    padding-top: 18px;
+    float: right;
+    width: 270px;
 }
 
 /* Custom container */

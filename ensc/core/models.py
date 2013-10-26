@@ -16,6 +16,8 @@ class Page(models.Model):
                               help_text='page header')
     short_text = models.TextField('short text', help_text='short text')
     detail_text = models.TextField('detail text', help_text='detail text')
+    title = models.CharField('title', max_length=4096, help_text='page title')
+    description = models.TextField('description', blank=True, help_text='description')
 
 
 class Block(models.Model):
