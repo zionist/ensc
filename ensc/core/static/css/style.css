@@ -9,17 +9,35 @@ body {
  position: absolute;
  z-index: -1;
  margin: 0 auto;
- height: 118px;
+ height: 103px;
  width: 100%;
  max-width: 1920px !important;
  background-image: url(/static/img/header3.png); 
  font-weight: 300;
 }
 
+
 #header_space {
- height: 95px;
+ height: 80px;
  width: 100%;
  display: block;
+}
+
+#login-mobile {
+    position: absolute;
+    right: 25px;
+    top: 5px;
+    width: auto;
+}
+
+#label-mobile {
+    margin-right: 10px;
+}
+
+#login {
+    padding-top: 15px;
+    float: right;
+    width: 110px;
 }
 
 .logo_font1 {
@@ -37,19 +55,19 @@ body {
 
 #header_logo {
     padding-left: 50px;
-    padding-top: 25px;
+    padding-top: 15px;
     float: left;
-    width: 550px;
+    width: 540px;
 }
 
 #header_label {
-    padding-top: 35px;
+    padding-top: 25px;
     float: left;
     width: auto;
 }
 
 #header_address {
-    padding-top: 18px;
+    padding-top: 10px;
     float: right;
     width: 270px;
 }
