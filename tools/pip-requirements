@@ -4,10 +4,11 @@ django-debug-toolbar
 # django-sentry
 # python-memcached
 # django-annoying
-# django-widget-tweaks
+django-widget-tweaks
 eventlet
 greenlet
 django-grappelli
 django-compressor
 django-inplaceedit
+django-simple-captcha
 # psycopg2

@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load compress %}
+{% load inplace_edit %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+        <h2> {% inplace_edit "page.header|safe" %} </h2>
+    </div>
+
+    <hr>
+    <!-- Example row of columns -->
+    <div class="row-fluid">
+        <div class="span9">
+            {% inplace_edit "page.short_text|safe" %}
+            <hr>
+            <form action="." method="post">{% csrf_token %}
+                <div class="row-fluid">
+                    <div class="span6"> 
+                        {{form.name.label }}
+                        <span class="text-error"> 
+                            {% for error in form.name.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </span>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span6"> 
+                        {{ form.name|attr:"class: span12"}}
+                    </div>
+                </div>
+
+                <div class="row-fluid">
+                    <div class="span6"> 
+                        {{form.skypeid.label }}
+                        <span class="text-error"> 
+                            {% for error in form.skypeid.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </span>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span6"> 
+                        {{ form.skypeid|attr:"class: span12"}}
+                    </div>
+                </div>
+
+                <div class="row-fluid">
+                    <div class="span6"> 
+                        {{form.time.label }}
+                        <span class="text-error"> 
+                            {% for error in form.time.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </span>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span6"> 
+                        {{ form.time|attr:"class: span12"}}
+                    </div>
+                </div>
+
+                <div class="row-fluid">
+                    <div class="span6"> 
+                        Докажите что вы не робот 
+                        <span class="text-error"> 
+                            {% for error in form.captcha.errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </span>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span6"> 
+                        {{ form.captcha|attr:"class: span12"}}
+                    </div>
+                </div>
+
+                <input type="submit" value="Отправить" />
+                <!-- <button class='js-captcha-refresh'>перерисовать</button> -->
+            </form>
+            <hr>
+            {% inplace_edit "page.detail_text|safe" %}
+        </div>
+
+
+        <div class="span3">
+            {% for block in page.block_set.all %}
+                <h4> {% inplace_edit "block.header" %} </h4>
+                {% inplace_edit "block.text|safe" %}
+                <hr>
+            {% endfor %}
+        </div>
+    </div>
+
+    <hr>
+{% endblock %}

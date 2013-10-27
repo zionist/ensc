@@ -15,7 +15,7 @@ class Page(models.Model):
     header = models.CharField('page header', max_length=400,
                               help_text='page header')
     short_text = models.TextField('short text', help_text='short text')
-    detail_text = models.TextField('detail text', help_text='detail text')
+    detail_text = models.TextField('detail text', blank=True, help_text='detail text')
     title = models.CharField('title', max_length=4096, help_text='page title')
     description = models.TextField('description', blank=True, help_text='description')
 

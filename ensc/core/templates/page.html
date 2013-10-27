@@ -1,161 +1,29 @@
+{% extends "base.html" %}
 {% load compress %}
 {% load inplace_edit %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>{{ titile }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="description" CONTENT="{{ description }}">
 
-    <!-- Le styles -->
-    <link href="/static/assets/css/bootstrap.css" rel="stylesheet">
-    <link href="/static/css/style.css" rel="stylesheet">
-    <link href="/static/bootstrap-responsive.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="/static/assets/js/html5shiv.js"></script>
-    <![endif]-->
-
-  </head>
-
-  <body>
-    <!-- header -->
-    <!-- header -->
-    <div class="container visible-phone">
-        <img src="/static/img/header3.png"/> 
-        <div id="login-mobile"> 
-            <span id="label-mobile" class="white_font"> american-classonline.ru английский онлайн</span> <i class="icon-user icon-white"></i> <a class="white_font header_link" href="/admin/">Вход</a> 
-        </div>
-    </div>
-
-    <div id="header"class="hidden-phone">  
-        <div id="header_logo" >
-            <p class="white_font logo_font1">american-classonline.ru</p> 
-            <p class="white_font logo_font2">Только англоязычные преподователи</p> 
-        </div>
-        <div id="header_label" class="visible-desktop">
-            <p class="white_font logo_font3">Английский онлайн</p> 
-        </div>
-    </div>
-    
-    <div id="header_space" class="hidden-phone"> 
-        <div id="login"> 
-            <i class="icon-user icon-white"></i> <a class="white_font header_link" href="/admin/">Вход</a> 
-        </div>
-     </div>
-
-    <div class="container">
-      <!-- <img src="/static/img/header2.png" /> -->
-      <div class="masthead">
-        <div class="navbar">
-          <div class="navbar-inner">
-            <div class="container">
-              <ul class="nav">
-                {% for item in menu %}
-                    {% if item.active %} 
-                        <li class="active"> <a href="{{ item.url }}">{{ item.name }}</a></li>
-                    {% else %}
-                        <li> <a href="{{ item.url }}">{{ item.name }}</a></li>
-                    {% endif %}
-                {% endfor %}
-                <!-- <li class="active"><a href="#">Приемущества</a></li> -->
-              </ul>
-            </div>
-          </div>
-        </div><!-- /.navbar -->
-      </div>
-
-      <!-- Jumbotron -->
-      <div class="jumbotron">
+{% block content %}
+    <!-- Jumbotron -->
+    <div class="jumbotron">
         <h2> {% inplace_edit "page.header|safe" %} </h2>
-      </div>
+    </div>
 
-      <hr>
-
-      <!-- Example row of columns -->
-      <div class="row-fluid">
+    <hr>
+    <!-- Example row of columns -->
+    <div class="row-fluid">
         <div class="span9">
-          {% inplace_edit "page.short_text|safe" %}
-          <hr>
-          {% inplace_edit "page.detail_text|safe" %}
-
+            {% inplace_edit "page.short_text|safe" %}
+            <hr>
+            {% inplace_edit "page.detail_text|safe" %}
         </div>
-        <div class="span3 ">
+        <div class="span3">
             {% for block in page.block_set.all %}
                 <h4> {% inplace_edit "block.header" %} </h4>
                 {% inplace_edit "block.text|safe" %}
                 <hr>
             {% endfor %}
         </div>
-      </div>
+    </div>
 
-      <hr>
-
-    </div> <!-- /container -->
-    <footer>
-      <div class="container white_font">
-        <div class="row-fluid">
-          <div class="span4">
-            <h3> Информация </h3> 
-              <p> <a class="white_font" href="/agreement">Договор</a> </p>
-          </div>
-          <div class="span4">
-          </div>
-          <div class="span4">
-            <h3> Контакты </h3> 
-              <address>
-                <p> Адрес: г. Краснодар, ул. Красная, 55 </p> 
-              </address>
-              <hr>
-              <p> <i class="icon-envelope icon-white"></i> <a class="white_font" href="mailto:info@ensc.net">info@ensc.net</a> </p>
-              <p> <i class="icon-headphones icon-white"></i> Скайп контакт: skypeid </p>
-              <p> <i class="icon-volume-down icon-white"></i> Телефон: +712345678 </p>
-              <!-- <i class="icon-envelope icon-white"></i> <a href="mailto:info@ensc.net">info@ensc.net</a> -->
-             <!-- <a href="#" class="scrollup"><i class="icon-chevron-up icon-white"></i></a>  -->
-          </div>
-        </div>
-      </div>
-      <!-- <div class="black_footer"> 
-        <div class="container white_font">
-          (c) ensc.net 
-        </div>
-      </div> !-->
-    </footer>
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <!-- 
-    <script src="assets/js/bootstrap-transition.js"></script>
-    <script src="assets/js/bootstrap-alert.js"></script>
-    <script src="assets/js/bootstrap-modal.js"></script>
-    <script src="assets/js/bootstrap-dropdown.js"></script>
-    <script src="assets/js/bootstrap-scrollspy.js"></script>
-    <script src="assets/js/bootstrap-tab.js"></script>
-    <script src="assets/js/bootstrap-tooltip.js"></script>
-    <script src="assets/js/bootstrap-popover.js"></script>
-    <script src="assets/js/bootstrap-button.js"></script>
-    <script src="assets/js/bootstrap-collapse.js"></script>
-    <script src="assets/js/bootstrap-carousel.js"></script>
-    <script src="assets/js/bootstrap-typeahead.js"></script> -->
-    <script src="/static/assets/js/jquery.js"></script>
-    {% inplace_toolbar %} {% comment %} or inplace_static {% endcomment %}
-
-    
-    {% compress js %}
-    <!-- <script>
-    // variable for passing to the coffeescript frontend
-    // var options = {
-    //   activemenu : 'test',
-    // };
-    </script> -->
-    <!-- <script type="text/coffeescript" charset="utf-8" src="/static/js/main.coffee" /> -->
-    {% endcompress %}
-
-  </body>
-</html>
+    <hr>
+{% endblock %}

@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^inplaceeditform/', include('inplaceeditform.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^captcha/', include('captcha.urls')),
     url(r'^core/', include('core.urls')),
     url('^$',  RedirectView.as_view(url='/core/pages/index')),
 )
