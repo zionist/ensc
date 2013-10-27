@@ -1,0 +1,8 @@
+{% load inplace_edit %}
+<div class="span3">
+    {% for block in page.block_set.all %}
+        <h4> {% inplace_edit "block.header" %} </h4>
+        {% inplace_edit "block.text|safe" %}
+        <hr>
+    {% endfor %}
+</div>

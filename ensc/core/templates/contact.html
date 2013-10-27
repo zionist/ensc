@@ -14,7 +14,7 @@
     <div class="row-fluid">
         <div class="span9">
             {% inplace_edit "page.short_text|safe" %}
-            <hr>
+            <p> </p>
             <form action="." method="post">{% csrf_token %}
                 <div class="row-fluid">
                     <div class="span6"> 
@@ -87,14 +87,7 @@
             {% inplace_edit "page.detail_text|safe" %}
         </div>
 
-
-        <div class="span3">
-            {% for block in page.block_set.all %}
-                <h4> {% inplace_edit "block.header" %} </h4>
-                {% inplace_edit "block.text|safe" %}
-                <hr>
-            {% endfor %}
-        </div>
+        {% include 'blocks.html' %}
     </div>
 
     <hr>
