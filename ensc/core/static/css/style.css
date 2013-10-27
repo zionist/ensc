@@ -40,6 +40,10 @@ body {
     width: 110px;
 }
 
+.header_link:hover {
+   color: #fff;
+}
+
 .logo_font1 {
     left: 50px;
     font-size: 34px;
