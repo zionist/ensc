@@ -58,9 +58,17 @@
               <ul class="nav">
                 {% for item in menu %}
                     {% if item.active %} 
-                        <li class="active"> <a href="{{ item.url }}">{{ item.name }}</a></li>
+                        {% if item.hidden_phone %}
+                            <li class="active hidden-phone"> <a href="{{ item.url }}">{{ item.name }}</a></li>
+                        {% else %}
+                            <li class="active"> <a href="{{ item.url }}">{{ item.name }}</a></li>
+                        {% endif %}
                     {% else %}
-                        <li> <a href="/core/pages/{{item.url}}">{{ item.name }}</a></li>
+                        {% if item.hidden_phone %}
+                            <li class="hidden-phone"> <a href="{{item.url}}">{{ item.name }}</a></li>
+                        {% else %}
+                            <li> <a href="{{item.url}}">{{ item.name }}</a></li>
+                        {% endif %}
                     {% endif %}
                 {% endfor %}
                 <!-- <li class="active"><a href="#">Приемущества</a></li> -->

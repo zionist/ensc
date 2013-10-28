@@ -16,7 +16,7 @@ class PageDetailView(DetailView):
         # end of request path
         for item in context['menu']:
             # set active menu tab
-            if item.url == url.split('/')[-1:][0]:
+            if item.url.split('/')[-1:][0] == url.split('/')[-1:][0]:
                 item.active = 'True'
         return context
 

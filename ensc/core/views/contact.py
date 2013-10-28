@@ -27,6 +27,13 @@ class ContactView(View):
     def do_render(self, request, form):
         # hardcode url
         menu = Menu.objects.all().order_by('-weight')
+        url = request.get_full_path()
+        # end of request path
+        for item in menu:
+            print item.url
+            # set active menu tab
+            if item.url.split('/')[-1:][0] == url.split('/')[-1:][0]:
+                item.active = 'True'
         page = Page.objects.get(url='contact')
         url = self.request.get_full_path()
         return render(request, 'contact.html', {

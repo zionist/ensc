@@ -55,3 +55,5 @@ class Menu(models.Model):
     weight = models.IntegerField('Weight for order', default=0, 
         help_text='Weight for ordering menu itimes on page. "\
         "If value is greater, menu item will be displayed on the right of the page')
+    hidden_phone = models.NullBooleanField("hide this entry in mobile version", 
+        help_text="hide this entry in mobile version")
