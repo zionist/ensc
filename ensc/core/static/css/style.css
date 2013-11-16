@@ -60,13 +60,13 @@ body {
     top: 5px;
     position: absolute; 
     z-index: -1;
-    right: 100px;
+    right: 105px;
 }
 
 #login {
-    padding-top: 15px;
+    padding-top: 10px;
     float: right;
-    width: 110px;
+    width: 115px;
 }
 
 .header_link:hover {
@@ -74,7 +74,7 @@ body {
 }
 
 .logo_font1 {
-    font-size: 34px;
+    font-size: 37px;
 }
 
 .logo_font2 {
