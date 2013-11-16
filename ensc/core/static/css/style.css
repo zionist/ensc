@@ -7,15 +7,32 @@ body {
 
 #header {
  position: absolute;
- z-index: -1;
+ z-index: -2;
  margin: 0 auto;
  height: 103px;
  width: 100%;
  max-width: 1920px !important;
- background-image: url(/static/img/header3.png); 
+ /*background-image: url(/static/img/header3.png); */
+ background-color: #0072BC; 
  font-weight: 300;
 }
 
+#mobile_header {
+ width: 100%;
+ height: 20px;
+ padding: 5px 5px 0 0;
+ background-color: #0072BC; 
+}
+
+#logo {
+    margin-top: 17px;
+    margin-left: 25px;
+    float: left;
+}
+
+.logo_image {
+    width: 50px;
+}
 
 #header_space {
  height: 80px;
@@ -24,14 +41,26 @@ body {
 }
 
 #login-mobile {
-    position: absolute;
-    right: 25px;
-    top: 5px;
+    padding-left: 5px;
     width: auto;
+    float: left;
+}
+
+#login-mobile-label {
+    width: auto;
+    float: right;
 }
 
 #label-mobile {
     margin-right: 10px;
+    float: left;
+}
+
+#statue {
+    top: 5px;
+    position: absolute; 
+    z-index: -1;
+    right: 100px;
 }
 
 #login {
@@ -45,7 +74,6 @@ body {
 }
 
 .logo_font1 {
-    left: 50px;
     font-size: 34px;
 }
 
@@ -58,10 +86,20 @@ body {
 }
 
 #header_logo {
-    padding-left: 50px;
-    padding-top: 15px;
+    margin-left: 20px;
+    margin-top: 17px;
     float: left;
-    width: 540px;
+    width: auto;
+}
+
+#delimetr {
+    width: 2px;
+    margin-top: 17px;
+    height: 50px;
+    border-left: 1px solid white;
+    float: left;
+    margin-left: 30px;
+    margin-right: 25px;
 }
 
 #header_label {

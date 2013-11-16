@@ -18,7 +18,6 @@ class ContactView(View):
         if form.is_valid():
             return HttpResponseRedirect('/core/pages/thanks')
         else:
-            print form.errors
             return self.do_render(request, form)
 
     def get(self, request):
@@ -30,7 +29,6 @@ class ContactView(View):
         url = request.get_full_path()
         # end of request path
         for item in menu:
-            print item.url
             # set active menu tab
             if item.url.split('/')[-1:][0] == url.split('/')[-1:][0]:
                 item.active = 'True'
